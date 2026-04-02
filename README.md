@@ -34,14 +34,18 @@ YTDOWNLOADER/
 
 - `YTDLP_JS_RUNTIMES`
 - `YTDLP_REMOTE_COMPONENTS`
+- `YTDLP_EXTRACTOR_ARGS`
+- `YTDLP_USER_AGENT`
 
 Suggested values when needed:
 
 - `YTDLP_JS_RUNTIMES=node`
 - `YTDLP_REMOTE_COMPONENTS=ejs:github`
+- `YTDLP_EXTRACTOR_ARGS=youtube:player_client=android,web`
 
 ## Notes
 
 - This setup is optimized for Vercel serverless usage.
 - Large/long videos can hit execution limits.
 - No cookie files are required in this repo.
+- Some videos may fail from datacenter IPs with a YouTube bot-check challenge.
