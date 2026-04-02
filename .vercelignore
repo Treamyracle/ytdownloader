@@ -1,0 +1,6 @@
+downloads/
+.venv/
+__pycache__/
+raw_cookie.txt
+cookies.txt
+*.log

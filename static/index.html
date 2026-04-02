@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Download YouTube videos in your preferred resolution and FPS. Fast, free, and private." />
+  <title>YT Downloader — Download YouTube Videos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Animated background blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <main class="container">
+    <div class="card" id="main-card">
+      <!-- Logo / Header -->
+      <div class="card-header">
+        <div class="logo">
+          <svg width="44" height="44" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="14" fill="url(#logo-grad)" />
+            <path d="M19 15L33 24L19 33V15Z" fill="#fff" />
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF4E50" />
+                <stop offset="1" stop-color="#F9D423" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <h1>YT Downloader</h1>
+        </div>
+        <p class="subtitle">Paste a YouTube link, pick your quality, and download.</p>
+      </div>
+
+      <!-- Form -->
+      <form id="download-form" autocomplete="off">
+        <!-- URL Input -->
+        <div class="input-group" id="url-group">
+          <label for="url-input">YouTube URL</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            <input
+              type="url"
+              id="url-input"
+              name="url"
+              placeholder="https://www.youtube.com/watch?v=..."
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Options Row -->
+        <div class="options-row">
+          <div class="input-group" id="resolution-group">
+            <label for="resolution-select">Resolution</label>
+            <div class="select-wrapper">
+              <select id="resolution-select" name="resolution">
+                <option value="360p">360p</option>
+                <option value="480p">480p</option>
+                <option value="720p" selected>720p</option>
+                <option value="1080p">1080p</option>
+                <option value="1440p">1440p</option>
+                <option value="4K">4K (2160p)</option>
+              </select>
+              <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+
+          <div class="input-group" id="fps-group">
+            <label for="fps-select">Frame Rate</label>
+            <div class="select-wrapper">
+              <select id="fps-select" name="fps">
+                <option value="30fps" selected>30 fps</option>
+                <option value="60fps">60 fps</option>
+              </select>
+              <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Button -->
+        <button type="submit" id="download-btn">
+          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Download</span>
+        </button>
+      </form>
+
+      <!-- Status Area -->
+      <div id="status-area" class="status-area hidden">
+        <div class="status-bar">
+          <div class="spinner" id="spinner"></div>
+          <p id="status-text">Waiting…</p>
+        </div>
+        <div class="progress-track" id="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Download Link (appears when done) -->
+      <a id="download-link" class="download-link hidden" href="#" download>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Save Video</span>
+      </a>
+    </div>
+
+    <footer class="footer">
+      <p>Powered by <strong>yt-dlp</strong> &amp; <strong>ffmpeg</strong> &middot; No data stored</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

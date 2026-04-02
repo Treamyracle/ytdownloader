@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.12",
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/static/index.html" },
+    { "source": "/styles.css", "destination": "/static/styles.css" },
+    { "source": "/script.js", "destination": "/static/script.js" }
+  ]
+}

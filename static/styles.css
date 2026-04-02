@@ -1,0 +1,456 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   YT Downloader — Styles
+   Premium dark glassmorphism UI with animated gradients
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Tokens ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Surface */
+  --bg: #0c0c14;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 8px 60px rgba(0, 0, 0, .55);
+
+  /* Text */
+  --text-primary: #f0f0f5;
+  --text-secondary: #9d9db5;
+  --text-muted: #5e5e78;
+
+  /* Accent gradient */
+  --accent-1: #FF4E50;
+  --accent-2: #F9D423;
+  --accent-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+
+  /* Input */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-focus: rgba(249, 212, 35, 0.35);
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* Transitions */
+  --ease: cubic-bezier(.4, 0, .2, 1);
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Animated Background Blobs ──────────────────────────────────────────── */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: .45;
+  animation: blobFloat 18s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 520px;
+  height: 520px;
+  background: #FF4E50;
+  top: -15%;
+  left: -10%;
+  animation-duration: 20s;
+}
+
+.blob-2 {
+  width: 440px;
+  height: 440px;
+  background: #F9D423;
+  bottom: -12%;
+  right: -8%;
+  animation-duration: 24s;
+  animation-delay: -6s;
+}
+
+.blob-3 {
+  width: 360px;
+  height: 360px;
+  background: #7928CA;
+  top: 50%;
+  left: 55%;
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+@keyframes blobFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(60px, -40px) scale(1.08); }
+  66%  { transform: translate(-30px, 50px) scale(.94); }
+  100% { transform: translate(20px, -20px) scale(1.03); }
+}
+
+/* ── Container ──────────────────────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(40px) saturate(1.6);
+  -webkit-backdrop-filter: blur(40px) saturate(1.6);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px 36px;
+  box-shadow: var(--card-shadow);
+  animation: cardIn .7s var(--ease) both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(.97);
+  }
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.card-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.logo h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: .92rem;
+  font-weight: 400;
+}
+
+/* ── Form Controls ──────────────────────────────────────────────────────── */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* URL Input */
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color .25s var(--ease);
+}
+
+#url-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  font-family: inherit;
+  font-size: .95rem;
+  color: var(--text-primary);
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+#url-input::placeholder {
+  color: var(--text-muted);
+}
+
+#url-input:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px var(--input-focus);
+}
+
+#url-input:focus ~ .input-icon,
+.input-wrapper:focus-within .input-icon {
+  color: var(--accent-2);
+}
+
+/* Options Row */
+.options-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 14px 40px 14px 16px;
+  font-family: inherit;
+  font-size: .93rem;
+  color: var(--text-primary);
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+.select-wrapper select:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px var(--input-focus);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* ── Download Button ────────────────────────────────────────────────────── */
+#download-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  margin-top: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0c0c14;
+  background: var(--accent-gradient);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s var(--ease), box-shadow .3s var(--ease);
+}
+
+#download-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.25), transparent 60%);
+  opacity: 0;
+  transition: opacity .3s var(--ease);
+}
+
+#download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(249, 212, 35, .35);
+}
+
+#download-btn:hover::before {
+  opacity: 1;
+}
+
+#download-btn:active {
+  transform: translateY(0) scale(.98);
+}
+
+#download-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Status Area ────────────────────────────────────────────────────────── */
+.status-area {
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+
+.status-area.hidden {
+  display: none;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent-2);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  flex-shrink: 0;
+}
+
+.spinner.done {
+  border-color: #34d399;
+  border-top-color: #34d399;
+  animation: none;
+}
+
+.spinner.error {
+  border-color: #f87171;
+  border-top-color: #f87171;
+  animation: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#status-text {
+  font-size: .85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Progress Track */
+.progress-track {
+  margin-top: 12px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent-gradient);
+  border-radius: 100px;
+  transition: width .4s var(--ease);
+}
+
+/* ── Download Link ──────────────────────────────────────────────────────── */
+.download-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 15px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0c0c14;
+  background: linear-gradient(135deg, #34d399, #059669);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: transform .2s var(--ease), box-shadow .3s var(--ease);
+}
+
+.download-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(52, 211, 153, .35);
+}
+
+.download-link.hidden {
+  display: none;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer p {
+  font-size: .75rem;
+  color: var(--text-muted);
+}
+
+.footer strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .card {
+    padding: 28px 20px 24px;
+    border-radius: var(--radius-md);
+  }
+  .options-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .logo h1 {
+    font-size: 1.35rem;
+  }
+}
+
+/* ── Select option styling for dark bg ──────────────────────────────────── */
+select option {
+  background: #1a1a2e;
+  color: var(--text-primary);
+}
